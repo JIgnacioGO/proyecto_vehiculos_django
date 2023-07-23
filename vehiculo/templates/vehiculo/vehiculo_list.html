@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--  Jumbotron -->
+<div class=" jumbotron-fluid bg-transparente text-light p-5">
+    <div class="container-fluid">
+        <h1 class="display-4">Listado de Vehículos</h1>
+    </div>
+</div>
+
+<section class="container">
+    <div class="container-fluid p-5 bg-transparente-radial rounded-3 container-vehiculo-list">
+        <div class="table-responsive">
+            <table class="table table-hover text-light">
+                <thead>
+                    <tr>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Serial Carroceria</th>
+                        <th scope="col">Serial Motor</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Condición de Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vehiculo in vehiculos %}
+                    <tr>
+                        <td>{{ vehiculo.marca }}</td>
+                        <td>{{ vehiculo.modelo }}</td>
+                        <td>{{ vehiculo.serial_carroceria | upper }}</td>
+                        <td>{{ vehiculo.serial_motor | upper }}</td>
+                        <td>{{ vehiculo.categoria }}</td>
+                        <td>{{ vehiculo.precio }}</td>
+                        <td>{{ vehiculo.precio_categoria }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+/* Se aplica a todo el documento, definido en base.html */
+body {
+    background-image: url('/static/img/fondo.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Se aplica al jumbotron en las páginas index, vehiculo_list y vehiculo_add */
+.bg-transparente {
+    background-image: linear-gradient(rgb(33, 37, 41), rgba(33, 37, 41, 0.0));
+    height: 300px;
+}
+
+/* Se aplica al fondo de la tabla en la página vehiculo_list */
+.bg-transparente-radial {
+    background-image: radial-gradient(ellipse at center, rgba(33, 37, 41, 1), rgba(33, 37, 41, 0.6));
+    height: 300px;
+}
+
+/* Afecta el color del texto cuando el mouse pasa sobre las filas de la tabla en la página vehiculo_list */
+.table-hover tr:hover td {
+    color: white;
+}
+
+/* Define el tamaño del contenedor de la tabla en la página vehiculo_list */
+.container-vehiculo-list {
+    height: 350px;
+}
+
+/* Controla la altura máxima del contenedor de la tabla en la página vehiculo_list */
+.table-responsive {
+    max-height: 275px;
+}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<!--  Jumbotron -->
+<div class=" jumbotron-fluid bg-transparente text-light p-5">
+    <div class="container-fluid">
+        <h1 class="display-4">Agregar Vehículos</h1>
+    </div>
+</div>
+
+
+<section class="container">
+    <div class="container-fluid bg-transparente-radial rounded-3 container-vehiculo-list">
+        <div class="mx-5 text-light">
+            <form method="post" class="d-flex flex-column align-items-center">
+                {% csrf_token %}
+                <div class="row d-flex flex-wrap justify-content-around">
+                    <div class="col-12 col-md-6 mt-5 mb-3">
+                        {{ form.marca|as_crispy_field }}
+                        {{ form.modelo|as_crispy_field }}
+                        {{ form.serial_carroceria|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-6 mt-5 mb-3">
+                        {{ form.serial_motor|as_crispy_field }}
+                        {{ form.categoria|as_crispy_field }}
+                        {{ form.precio|as_crispy_field }}
+                    </div>
+                </div>
+                <button class="btn btn-outline-light mt-3" type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

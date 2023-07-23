@@ -1,0 +1,80 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="author" content="JIgnacioGO">
+    <meta name="description" content="Catalogo de vehiculos">
+    <meta name="keywords" content="vehiculos, Catalogo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Titulo -->
+    <title>Proyecto Vehículos Django</title>
+    <!--CSS  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Vehiculos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'vehiculo:index' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        {% if perms.vehiculo.agregar_vehiculo %}
+                        <a class="nav-link" href="{% url 'vehiculo:vehiculo_add' %}">Agregar</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item">
+                        {% if perms.vehiculo.visualizar_catalogo %}
+                        <a class="nav-link" href="{% url 'vehiculo:vehiculo_list' %}">Listar</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item"></li>
+
+                </ul>
+                {% if request.user.is_authenticated %}
+                <span class="navbar-text ms-auto">
+                    Bienvenido
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'admin:index' %}">{{ user.username }}</a>
+                    {% else %}
+                    {{ user.username }}
+                    {% endif %}
+                    | <a href="{% url 'logout' %}">Salir</a>
+                </span>
+                {% else %}
+                <span class="navbar-text ms-auto">
+                    <a href="{% url 'login' %}">Acceder</a> |
+                    <a href="{% url 'vehiculo:signup' %}">Registrarse</a>
+                </span>
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    {% block content %}{% endblock %}
+</body>
+
+</html>
